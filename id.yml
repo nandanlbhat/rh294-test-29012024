@@ -1,0 +1,13 @@
+---
+- name: play to show the users's id
+  hosts: servera.lab.example.com
+
+  tasks:
+    - name: run the id command
+      command: id
+      register: id_output
+
+    - name: show the id_output variable
+      debug:
+        var: id_output
+...
