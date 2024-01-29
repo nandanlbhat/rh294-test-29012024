@@ -1,0 +1,9 @@
+---
+- name: my first play
+  hosts: workstation.lab.example.com
+
+  tasks:
+    - name: say hello
+      ansible.builtin.debug:
+        msg: hello world
+...
