@@ -1,0 +1,16 @@
+---
+- name: ensure test.txt exists on servers group hosts
+  hosts: servers
+  gather_facts: false
+
+  tasks:
+    - name: ensure test.txt exists
+      ansible.builtin.copy:
+        content: "rh294\n"
+        dest: /tmp/test.txt
+      register: copy_out
+
+    - name: show the output of copy module
+      ansible.builtin.debug: 
+        var: copy_out
+...

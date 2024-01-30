@@ -1,0 +1,23 @@
+---
+- name: check out variables
+  hosts: servers
+  gather_facts: false
+
+  #vars:
+  #  first_name: Red
+  #  last_name: Hat
+
+  #vars_files:
+  #  - my_vars_file.yml
+
+  tasks:
+    - name: show variables
+      #vars:
+      #  first_name: IBM
+      #  last_name: Inc
+      ansible.builtin.debug:
+        msg: >
+          Hi this is somebody.
+          I was born in the United States.
+          My name is {{ first_name}} {{ last_name }}
+...
