@@ -1,0 +1,13 @@
+---
+- name: ensure /tmp/test.txt is present with correct content
+  hosts: servers
+
+  tasks:
+    - name: ensure file is present with correct content
+      ansible.builtin.copy:
+        content: >
+          RH294 Red Hat Certified 
+          Engineer Training
+          Offered in many languages
+        dest: /tmp/test.txt
+...

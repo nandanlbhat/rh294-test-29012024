@@ -1,0 +1,10 @@
+---
+- name: ensure /tmp/test.txt is absent
+  hosts: servers
+
+  tasks:
+    - name: ensure file is absent
+      ansible.builtin.file:
+        path: /tmp/test.txt
+        state: absent
+...

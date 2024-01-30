@@ -1,0 +1,29 @@
+---
+- hosts: web
+  become: true
+  name: ensure web service is enabled in web group
+  tasks:
+    - ansible.builtin.dnf:
+        name: httpd
+        state: present
+      name: ensure package is installed
+
+    - ansible.builtin.copy:
+        src: files/index.html
+        dest: /var/www/html/index.html
+      name: ensure web page is correctly deployed
+
+    - ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: true
+      name: ensure the web service is running
+
+    - name: check if the service is working
+      ansible.builtin.uri:
+        url: http://{{ inventory_hostname }}
+        status_code: 200
+        return_content: false
+      become: false
+      delegate_to: workstation.lab.example.com
+...
