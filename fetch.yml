@@ -1,0 +1,13 @@
+---
+- name: fetch files from hosts
+  hosts: servers
+  gather_facts: false
+
+  tasks:  
+    - name: fetch the /tmp/test.txt
+      ansible.builtin.fetch:
+        src: /tmp/test.txt
+        dest: fetched-files/test.txt-{{ inventory_hostname }}
+        flat: yes
+
+...
