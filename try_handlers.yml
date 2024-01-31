@@ -1,0 +1,33 @@
+---
+- name: try handlers
+  hosts: servera.lab.example.com
+  gather_facts: false
+
+  tasks:
+    - name: task 1
+      ansible.builtin.command: ls /tmp
+      notify: handler_1
+
+    - name: task 2
+      ansible.builtin.copy:
+        content: test content
+        dest: /tmp/test.txt
+      notify:
+        - handler_1
+        - handler_2
+
+  handlers:
+    - name: handler_2
+      ansible.builtin.debug:
+        msg: handler_2 ran
+
+    - name: handler_1
+      ansible.builtin.debug:
+        msg: handler_1 ran
+        
+
+    - name: handler_3
+      ansible.builtin.debug:
+        msg: handler_3 ran
+      listen: handler_1
+...
