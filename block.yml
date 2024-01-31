@@ -1,0 +1,37 @@
+---
+- name: try blocks
+  hosts: servera.lab.example.com
+  gather_facts: false
+
+  tasks:
+    - block:
+        - name: fail intentionally
+          ansible.builtin.fail:
+            msg: this is a failure for testing
+
+        - name: task1 in block
+          ansible.builtin.debug:
+            msg: task1 in block
+  
+        - name: task2 in block
+          ansible.builtin.debug:
+            msg: task2 in block
+  
+      rescue:
+        - name: task1 in rescue
+          ansible.builtin.debug:
+            msg: task1 in rescue
+  
+        - name: task2 in rescue
+          ansible.builtin.debug:
+            msg: task2 in rescue
+  
+      always:
+        - name: task1 in always
+          ansible.builtin.debug:
+            msg: task1 in always
+  
+        - name: task2 in always
+          ansible.builtin.debug:
+            msg: task2 in always
+...
