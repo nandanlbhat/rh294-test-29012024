@@ -1,0 +1,16 @@
+---
+- name: try using a template
+  hosts: servers
+
+  tasks:
+    - name: push a template render to all servers
+      ansible.builtin.template:
+        src: template-test.conf.j2
+        dest: /tmp/test.conf
+
+    - name: fetch the /tmp/test.conf
+      ansible.builtin.fetch:
+        src: /tmp/test.conf
+        dest: fetched-files/test.conf-{{ inventory_hostname }}
+        flat: yes
+...
