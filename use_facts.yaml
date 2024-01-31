@@ -1,0 +1,17 @@
+---
+- name: try to get the default IPv4 address of host
+  hosts: servers
+  #gather_facts: false
+
+  tasks:
+  #  - name: collect a subset of facts
+  #    ansible.builtin.setup:
+  #      gather_subset:
+  #        - '!all'
+  #        - network
+
+    - name: display the collected fact
+      ansible.builtin.debug:
+        var: ansible_facts['ansible_local']['something']['somesection']['somevariable']
+
+...
