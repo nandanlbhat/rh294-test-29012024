@@ -1,0 +1,17 @@
+---
+- name: try the when conditional
+  hosts: servera.lab.example.com
+  gather_facts: false
+
+  vars:
+    test_var: playbook
+
+  tasks:
+    - name: display a message
+      ansible.builtin.debug:
+        msg: hello world
+      when: test_var == "playbook" or test_var == "tasks"
+
+
+
+...

@@ -1,0 +1,21 @@
+---
+- name: ensure atd and crond services are running
+  hosts: servera.lab.example.com
+  gather_facts: false
+
+  vars:
+    my_services:
+      - atd
+      - crond
+      - chronyd
+
+  tasks:
+    - name: check for running satatus of service
+      ansible.builtin.service:
+        name: "{{ item }}"
+        state: started
+      loop:
+        - auditd
+        - rsyslog
+        - sshd
+...
