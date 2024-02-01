@@ -17,3 +17,16 @@ serverd.lab.example.com
 server[a:d].lab.example.com
 SERVER[A:D].LAB.EXAMPLE.COM
 
+[webserver]
+mywebserver ansible_host=servera.lab.example.com
+
+[a_and_b]
+servera.lab.example.com
+serverb.lab.example.com
+
+[a_and_c]
+servera.lab.example.com
+serverc.lab.example.com
+
+
+

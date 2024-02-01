@@ -1,0 +1,7 @@
+---
+- name: "{{ greeting }} from within a role"
+  ansible.builtin.debug:
+    msg: "{{ greeting }} from the student.myfirstrole role"
+  changed_when: true
+  notify: hander_in_student.myfirstrole
+...

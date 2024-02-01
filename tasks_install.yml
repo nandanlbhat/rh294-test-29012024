@@ -1,0 +1,9 @@
+- name: ensure {{ package }} package is installed
+  ansible.builtin.dnf:
+    name: "{{ package }}"
+    state: present
+
+- name: ensure {{ service }} service is started
+  ansible.builtin.service:
+    name: "{{ service }}"
+    state: started

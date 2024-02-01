@@ -1,0 +1,6 @@
+---
+- name: hander_in_student.myfirstrole
+  ansible.builtin.debug:
+    msg: the role handler ran
+
+...

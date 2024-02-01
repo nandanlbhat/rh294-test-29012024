@@ -1,0 +1,10 @@
+---
+- name: try a non-dns name in inventory
+  #hosts: webserver
+  hosts: a*
+  gather_facts: false
+
+  tasks:
+    - name: list contents of /tmp
+      ansible.builtin.command: ls /tmp
+...

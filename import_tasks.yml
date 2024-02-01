@@ -1,0 +1,13 @@
+---
+- name: ensure a service is up and running
+  hosts: servera.lab.example.com
+  gather_facts: false
+  become: true
+
+  tasks:
+    - import_tasks: tasks_install.yml
+      vars:
+        package: httpd
+        service: httpd
+
+...
