@@ -1,0 +1,10 @@
+---
+-  name: trying out three spaces
+   hosts: localhost
+   gather_facts: false
+
+   tasks:
+      -  name: say hello world
+         ansible.builtin.debug:
+            msg: hello world with three spaces
+...
